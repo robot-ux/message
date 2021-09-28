@@ -1,0 +1,69 @@
+{
+  "name": "@binance-chain/message",
+  "version": "0.0.1",
+  "description": "A Message passing tool",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "module": "dist/message.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test --config ./config/jest.config.js",
+    "lint": "tsdx lint src",
+    "prepare": "tsdx build",
+    "size": "size-limit",
+    "analyze": "size-limit --why"
+  },
+  "peerDependencies": {},
+  "author": "robot-ux",
+  "devDependencies": {
+    "@binance-chain/commitlint-config": "^0.3.0",
+    "@binance-chain/prettier-config": "^1.0.1",
+    "@commitlint/cli": "^13.1.0",
+    "@size-limit/preset-small-lib": "^4.10.2",
+    "@types/webextension-polyfill": "^0.8.0",
+    "husky": "4.3.8",
+    "sinon-chrome": "^3.0.1",
+    "size-limit": "^4.10.2",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.2.0",
+    "typescript": "^4.2.4"
+  },
+  "prettier": "@binance-chain/prettier-config",
+  "commitlint": {
+    "extends": [
+      "@binance-chain/commitlint-config"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "size-limit": [
+    {
+      "path": "dist/message.cjs.production.min.js",
+      "limit": "10 KB"
+    },
+    {
+      "path": "dist/message.esm.js",
+      "limit": "10 KB"
+    }
+  ],
+  "dependencies": {
+    "eth-rpc-errors": "^4.0.3",
+    "webextension-polyfill": "^0.8.0"
+  }
+}
