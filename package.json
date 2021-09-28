@@ -1,5 +1,5 @@
 {
-  "name": "@binance-chain/message",
+  "name": "@actool/message",
   "version": "0.0.1",
   "description": "A Message passing tool",
   "license": "MIT",

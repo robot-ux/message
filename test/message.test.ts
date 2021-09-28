@@ -1,5 +1,5 @@
 import { BaseMessage, ExtensionMessage } from '../src';
-import { ethErrors } from 'eth-rpc-errors';
+// import { ethErrors } from 'eth-rpc-errors';
 
 describe('events', () => {
   it('emit event', () => {

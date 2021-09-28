@@ -1,14 +1,28 @@
 # Message
 
+## Install
+
+```sh
+yarn add @actool/message -S
+```
+
 ## Usage
 
 ```js
-import { injectEvent, emitEvent } from '@binance-chain/message';
+import { BaseMessage, ExtensionMessage } from '@actool/message';
 
-//
-injectEvent('requestAccounts', (data) => {
-  return {};
+// event
+const event = new BaseMessage();
+event.connect();
+
+event.on('requestAccounts', async (params) => {
+  return Promise.resolve({ address: '0x1234', id: (params as any).id });
 });
 
-emitEvent('requestAccounts');
+event
+  .emit('requestAccounts', { id: 123 })
+  .then((res) => {
+    console.log(res);
+  })
+  .catch((e) => console.log('error: ', e));
 ```
